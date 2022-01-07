@@ -1,32 +1,10 @@
-## Ignore - Can't figure out how to private this
+## My life goals at 19
 
-Due to a plugin called `jekyll-titles-from-headings` which is supported by GitHub Pages by default. The above header (in the markdown file) will be automatically used as the pages title.
+I thought it'd be interesting to start a yearly list I can compile of the things I want to accomplish in my life, which I'm presuming will change as I grow up.  As the title suggests, this is the goal list from when I'm 19 (my current age), I'll start the next list in a few months time on my 20th birthday.  The lists aren't finished, I'll update them throughout the year, and likely go back in time and tick things off if I ever manage them.
 
-If the file does not start with a header, then the post title will be derived from the filename.
-
-This is a sample blog post. You can talk about all sorts of fun things here.
-
----
-
-### This is a header
-
-#### Some T-SQL Code
-
-```tsql
-SELECT This, [Is], A, Code, Block -- Using SSMS style syntax highlighting
-    , REVERSE('abc')
-FROM dbo.SomeTable s
-    CROSS JOIN dbo.OtherTable o;
-```
-
-#### Some PowerShell Code
-
-```powershell
-Write-Host "This is a powershell Code block";
-
-# There are many other languages you can use, but the style has to be loaded first
-
-ForEach ($thing in $things) {
-    Write-Output "It highlights it using the GitHub style"
-}
-```
+**The list**
+-   Reach £1,000,000 net worth
+-   Finish the apple ecosystem
+-   Own my own home - drink a dark fruits in it
+-   Have a 5 figure week (as in £10,000+ earnt)
+-   Have a 5 figure day (veru ambitious...)
