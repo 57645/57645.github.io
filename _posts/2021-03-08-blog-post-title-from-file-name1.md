@@ -8,3 +8,5 @@ I thought it'd be interesting to start a yearly list I can compile of the things
 -   Own my own home - drink a dark fruits in it
 -   Have a 5 figure week (as in £10,000+ earnt)
 -   Have a 5 figure day (veru ambitious...)
+-   Have a 4 figure day (£1,000 earnt) ✅
+-   Have a 4 figure week ✅
