@@ -1,3 +1,1 @@
-I gamble.  A Lot
-
-Remember - no gamble no future and just back fucking winners
+I enjoy coding, problem solving and sports.  Still searching for ways to combine the three, and hopefully this blog should cover the ways I am able to do so.  Currently serving as a hosting space for portfolio work and general blogging.
