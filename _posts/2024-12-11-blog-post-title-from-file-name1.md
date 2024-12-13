@@ -7,7 +7,7 @@ THe fundamental ideas behind wordle are simple, and I'm certainly not the first 
 
 Downloading both of these lists let me access them using python, both for validating user guesses and producing a random wordle every time the program run.  I'll quickly run through the process for both of these functions.
 
-#Load wordle
+# Load wordle
 ```
 def load_wordles():
     try:
@@ -21,3 +21,13 @@ This was a relatively simple function once I wrapped my head around loading file
 ```
 wordle = load_wordles()
 ```
+# Correct guesses
+Another relatively simple process was updating the progress variable to include characters that are both in the word, and in the correct location in the users guess.  Simply checking through the characters using a for loop, and comparing them to their corresponding character in the wordle allowed me to update progress with an uppercase character if it was correct, and move on to the next character if not.
+```
+    for char in range(len(guess)): #Check through word
+        #Check for correct letters in correct place
+        if guess[char] == wordle[char]:
+            progress[char] = guess[char].upper()
+```
+# Letters in the wordle, but in the incorrect location (yellow characters)
+This was the first source of real trouble with the program.  I initially over simplified and extended the loop checking if a character was green to check if the character was in the wordle at all.  The issue with this is that characters guessed twice in a word behave differently if they're correctly matched to a letter and go green.  E.g. If the wordle is MAGMA, and the users guess is MAMMA, output should be MA_MA.  Using the method mentioned above gives an output of MAmMA, making it hard for the user to correctly guess.
