@@ -31,3 +31,55 @@ Another relatively simple process was updating the progress variable to include 
 ```
 # Letters in the wordle, but in the incorrect location (yellow characters)
 This was the first source of real trouble with the program.  I initially over simplified and extended the loop checking if a character was green to check if the character was in the wordle at all.  The issue with this is that characters guessed twice in a word behave differently if they're correctly matched to a letter and go green.  E.g. If the wordle is MAGMA, and the users guess is MAMMA, output should be MA_MA.  Using the method mentioned above gives an output of MAmMA, making it hard for the user to correctly guess.
+
+To solve this issue I needed to record the characters that had been correctly guessed, and leave the same characters alone if they were repeated.  The process was simplified when I wrote it out in plain English.  The criteria for a character to be yellow is:
+1. Present in the wordle
+2. Not present in the characters that have already been guessed (another way of saying this is that the character is present in the characters that haven't been guessed).
+
+To represent this I created a leftovers list, made up of characters from the wordle that were not green.  I then used a for loop to check if a character was in the wordle.  If it was, then it was checked to see if it was also present in the 'leftover' letters.  If so, the character was in the wordle, but in the wrong place and marked as lowercase.  If not, the loop moved on to the next character.  This loop ran through all characters, concluding the program and outputting the result of their guess.
+```
+  leftovers = [x for x in check_letters if x not in used_pos]
+  letter_list = str(incorrect_letters)
+  for char in leftovers:
+      if guess[char] in wordle:
+          if guess[char] in letter_list:
+              progress[char] = guess[char].lower()
+```
+# Record results
+As an afterthought and to test my dictionary knowledge I added a function to record user results and output them at the end of the program.  This gave me some experience with updating txt files outside of the program, and storing different usernames.  The funtion asks for the users name, and then either initiates a scoring section for them, or moves on if they already have an account (and therefore scores saved).
+```
+def trigger_results():
+    global user
+    try:
+        with open('user_results.txt', 'r') as file:
+            user_results = json.load(file)
+    except FileNotFoundError:
+        user_results = {}
+    user = input("Username: ")
+    if user not in user_results:
+        user_results[user] = {"score1": 0, "score2": 0, "score3": 0, "score4": 0, "score5": 0, "score6": 0, "scorefail": 0,}
+        with open('user_results.txt', 'w') as file:
+            json.dump(user_results, file, indent=4)
+```
+When either the wordle is correctly guessed, or the user runs out of attempts, the program outputs their result in a simple count of their attempts, and then a historical record.  The current result is added to the tally and then output so that they can keep track easily.
+```
+#Code for when user guesses the wordle
+print(f"Correct: You got it in {i}")
+with open('user_results.txt', 'r') as file:
+    user_results = json.load(file)
+    score_key = f"score{i}"
+    user_results[user][score_key] += 1
+with open('user_results.txt', 'w') as file:
+    json.dump(user_results, file, indent=4)
+print("Your previous results are: ")
+attempts = 1
+for i in user_results[user]:        
+    print(f"{attempts} attempts: {user_results[user][i]}")
+    attempts += 1
+    if attempts == 7:
+        attempts = "Failed"
+        print(f"{attempts} attempts: {user_results[user][i]}")
+        break
+```
+# Next steps
+Now that I have a functioning wordle program, the next step will be to build a solver.  I've got some ideas that are relatively simple, but would ideally like to work up to a point where the program effectively plays against itself.  I'll write another blog when this is completed, I've got some preliminary progress already.
